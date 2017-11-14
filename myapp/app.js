@@ -7,10 +7,8 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var expressSession = require('express-session');
 var index = require('./routes/index');
-//var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 8080;
 var env = require('dotenv').load();
-
-// var hbs = require("hbs");
 
 
 var app = express();
@@ -18,12 +16,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
-// app.engine('hbs', hbs({
-//   extname: 'hbs',
-//   layoutDir: __dirname + '/views/layouts',
-//   partialsDir : [__dirname + '/views/partials',]
-// }));
 
 
 app.use(expressSession({secret: 'mySecretKey'}));
@@ -70,7 +62,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(8080, function(err) {
+app.listen(port, function(err) {
  
     if (!err)
         console.log("Site is live");
