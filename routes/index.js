@@ -42,7 +42,7 @@ var isAuthenticated = function (req, res, next) {
 	}));
 
 	/* GET Home Page */
-	router.get('/home', function(req, res){
+	router.get('/', function(req, res){
 		res.render('home', { user: req.user });
 	});
 
