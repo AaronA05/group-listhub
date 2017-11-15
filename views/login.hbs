@@ -61,36 +61,124 @@
 <div id="box">
   <img src="images/listhub-white.png" class="logo-big" alt="yourlogo" />
   <h1>Member Login</h1>
-  <form>
-    <input id="uName" type="text" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Username':this.value;" value="Username" />
-    <input id="uPassword" type="password" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Password':this.value;" value="Password">
+  <form method="POST" action="/login" class="form-signin">
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
     
-    <input id="login" type="button" name="login" value="Log In" />
+    <input id="inputUsername" type="text" name="username" class="form-control" placeholder="Username" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Username':this.value;" value="Username" />
+    <input id="inputPassword" type="password" name="password" class="form-control" placeholder="Password" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Password':this.value;" value="Password">
+    
+    <input id="login" type="submit" name="login" value="Log In" />
     <input id="signup" type="button" name="signup" data-toggle="modal" data-target="#exampleModal" value = "Sign Up" />
   </form>
 </div>
 <!-- Login Box End -->
+<!-- <div class="container">
+  <form method="POST" action="/login" class="form-signin">
+    <h2 class="form-signin-heading">Please log in</h2>
+    
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
+    
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+  </form>
+</div> -->
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
+
+
+<div class="container">
+  <form method="POST" action="/signup" class="form-signin">
+    <h2 class="form-signin-heading">Create an account</h2>
+    
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+    {{/if}}
+    
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+    
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+    
+
+    <label for="inputPassword" class="sr-only">Repeat Password</label>
+    <input type="password" id="inputPassword2" name="password2" class="form-control" placeholder="Repeat Password" required>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+  </form>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="exampleModal">
+                    Modal title
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form method="POST" action="/signup" class="form-signin" role="form">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label" for="inputUserName" name="username" class="form-control">UserName</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inputPassword" class="sr-only">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inputPassword2" class="sr-only">Repeat Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" id="inputPassword2" name="password2" class="form-control" placeholder="Repeat Password" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                            Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <footer class="footer">
    <div class="container">
@@ -103,10 +191,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="bootstrap/bootstrapCore.js"></script>
 
-<script type="text/javascript" src="js/login.js">
-  
-
-
-</script>  
+<script type="text/javascript" src="js/login.js"></script>  
 
 </html>
